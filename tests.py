@@ -9,10 +9,12 @@ import pregunta
 
 
 def test_01():
+    print(pregunta.clean_data().sexo.value_counts())
     assert pregunta.clean_data().sexo.value_counts().to_list() == [6767, 3650]
 
 
 def test_02():
+    print(pregunta.clean_data().tipo_de_emprendimiento.value_counts())
     assert pregunta.clean_data().tipo_de_emprendimiento.to_list() == [
         5754,
         2252,
@@ -22,6 +24,7 @@ def test_02():
 
 
 def test_03():
+    print(pregunta.clean_data().idea_negocio.value_counts())
     assert pregunta.clean_data().idea_negocio.to_list() == [
         1904,
         1717,
@@ -102,6 +105,7 @@ def test_03():
 
 
 def test_04():
+    print(pregunta.clean_data().barrio.value_counts())
     assert pregunta.clean_data().barrio.to_list() == [
         1020,
         485,
@@ -341,10 +345,12 @@ def test_04():
 
 
 def test_05():
+    print(pregunta.clean_data().estrato.value_counts())
     assert pregunta.clean_data().estrato.to_list() == [5132, 3219, 2062, 4]
 
 
 def test_06():
+    print(pregunta.clean_data().comuna_ciudadano.value_counts())
     assert pregunta.clean_data().comuna_ciudadano.to_list() == [
         1328,
         1136,
@@ -371,6 +377,7 @@ def test_06():
 
 
 def test_07():
+    print(pregunta.clean_data().fecha_de_beneficio.value_counts())
     assert pregunta.clean_data().fecha_de_beneficio.to_list() == [
         62,
         58,
@@ -1172,6 +1179,7 @@ def test_07():
 
 
 def test_08():
+    print(pregunta.clean_data().monto_del_credito.value_counts())
     assert pregunta.clean_data().monto_del_credito.to_list() == [
         1195,
         1079,
@@ -1457,6 +1465,7 @@ def test_08():
 
 
 def test_09():
+    print(pregunta.clean_data().línea_credito.value_counts())
     assert pregunta.clean_data().línea_credito.to_list() == [
         10231,
         70,
