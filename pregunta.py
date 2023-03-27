@@ -10,11 +10,22 @@ import pandas as pd
 
 
 def clean_data():
+    df = (pd.read_csv('solicitudes_credito.csv', sep=';')
+          .drop(columns=['Unnamed: 0'], axis=1)
+          .dropna())
 
-    df = pd.read_csv("solicitudes_credito.csv", sep=";")
+    for column in df.columns:
+        df[column] = (df[column].astype(str)
+                      .str.lower()
+                      .str.replace('-', ' ')
+                      .str.replace('_', ' ')
+                      .str.replace(',', '')
+                      .str.replace('$', '')
+                      )
 
-    #
-    # Inserte su código aquí
-    #
+    df.fecha_de_beneficio = pd.to_datetime(df['fecha_de_beneficio'], dayfirst=True)
+    df.monto_del_credito = df.monto_del_credito.astype(float)
+    df.comuna_ciudadano = df.comuna_ciudadano.astype(float)
+    df.drop_duplicates(inplace=True)
 
     return df
