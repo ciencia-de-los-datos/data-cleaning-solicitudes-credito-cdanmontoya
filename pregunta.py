@@ -11,8 +11,8 @@ import pandas as pd
 
 def clean_data():
     df = (pd.read_csv('solicitudes_credito.csv', sep=';')
-          .dropna()
-          .drop_duplicates(ignore_index=True))
+          .drop(columns=['Unnamed: 0'], axis=1)
+          .dropna())
 
     for column in df.columns:
         df[column] = (df[column].astype(str)
@@ -21,10 +21,11 @@ def clean_data():
                       .str.replace('_', ' ')
                       .str.replace(',', '')
                       .str.replace('$', '')
-                      .str.strip())
+                      )
 
     df.fecha_de_beneficio = pd.to_datetime(df['fecha_de_beneficio'], dayfirst=True)
     df.monto_del_credito = df.monto_del_credito.astype(float)
     df.comuna_ciudadano = df.comuna_ciudadano.astype(float)
+    df.drop_duplicates(inplace=True)
 
     return df
