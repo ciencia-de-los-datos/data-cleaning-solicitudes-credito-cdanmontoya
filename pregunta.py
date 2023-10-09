@@ -23,7 +23,7 @@ def clean_data():
                       .str.replace('$', '')
                       )
 
-    df.fecha_de_beneficio = pd.to_datetime(df['fecha_de_beneficio'], dayfirst=True)
+    df.fecha_de_beneficio = pd.to_datetime(df['fecha_de_beneficio'], dayfirst=True, format='mixed')
     df.monto_del_credito = df.monto_del_credito.astype(float)
     df.comuna_ciudadano = df.comuna_ciudadano.astype(float)
     df.drop_duplicates(inplace=True)
